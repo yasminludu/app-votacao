@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+    rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+    <script>
+        // Simulação de usuários (vereadores) cadastrados
+        const users = {
+            'vereador1': 'senha1',
+            'vereador2': 'senha2',
+            'vereador3': 'senha3',
+            'vereador4': 'senha4',
+            'vereador5': 'senha5',
+            'vereador6': 'senha6',
+            'vereador7': 'senha7',
+            'vereador8': 'senha8',
+            'vereador9': 'senha9',
+            'vereador10': 'senha10',
+            'vereador11': 'senha11',
+            'vereador12': 'senha12',
+            'vereador13': 'senha13'
+        };
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error-message');
+
+            if (!username || !password) {
+                errorMsg.textContent = 'Preencha todos os campos!';
+                return;
+            }
+
+            if (users[username] && users[username] === password) {
+                alert('Login bem-sucedido!');
+                window.location.href = 'votacao.html'; // Redireciona para a tela de votação
+            } else {
+                errorMsg.textContent = 'Usuário ou senha inválidos!';
+            }
+        }
+    </script>
+</head>
+<body>
+    <main class="container"> 
+
+        <form>
+            <h1>Login</h1>
+            <div class="input-box">
+                <input placeholder="Usuário" type="email">
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input placeholder="Senha" type="password">
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox">
+                    Lembrar senha
+                </label>
+                <a href="#">Esqueci a senha</a>
+            </div>
+
+            <button type="submit" class="login">Login</button>
+
+            <div class="register-link">
+                <p>Não tem uma conta? <a href="cadastrochatgpt/cadastro.html">Cadastre-se</a></p>
+            </div>
+        </form>
+
+    </main>
+</body>
+</html>
