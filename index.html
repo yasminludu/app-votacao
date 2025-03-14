@@ -8,42 +8,6 @@
     rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
     <title>Login</title>
-    <script>
-        // Simulação de usuários (vereadores) cadastrados
-        const users = {
-            'vereador1': 'senha1',
-            'vereador2': 'senha2',
-            'vereador3': 'senha3',
-            'vereador4': 'senha4',
-            'vereador5': 'senha5',
-            'vereador6': 'senha6',
-            'vereador7': 'senha7',
-            'vereador8': 'senha8',
-            'vereador9': 'senha9',
-            'vereador10': 'senha10',
-            'vereador11': 'senha11',
-            'vereador12': 'senha12',
-            'vereador13': 'senha13'
-        };
-
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorMsg = document.getElementById('error-message');
-
-            if (!username || !password) {
-                errorMsg.textContent = 'Preencha todos os campos!';
-                return;
-            }
-
-            if (users[username] && users[username] === password) {
-                alert('Login bem-sucedido!');
-                window.location.href = 'votacao.html'; // Redireciona para a tela de votação
-            } else {
-                errorMsg.textContent = 'Usuário ou senha inválidos!';
-            }
-        }
-    </script>
 </head>
 <body>
     <main class="container"> 
@@ -74,5 +38,29 @@
         </form>
 
     </main>
+    <script>
+        async function cadastrar(event) {
+            event.preventDefault();
+    
+            const nomeCompleto = document.getElementById('nomeCompleto').value;
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const cpf = document.getElementById('cpf').value;
+            const usuario = document.getElementById('cadastroUsuario').value;
+            const senha = document.getElementById('cadastroSenha').value;
+    
+            const response = await fetch('http://localhost:3000/api/auth/cadastrar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nomeCompleto, dataNascimento, cpf, usuario, senha })
+            });
+    
+            const data = await response.json();
+            alert(data.message);
+            if (response.ok) {
+                window.location.href = "votacao.html";
+            }
+        }
+    </script>
+    
 </body>
 </html>
