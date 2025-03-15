@@ -10,7 +10,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 // Conectar ao MongoDB (substitua pela URL do seu banco se for na nuvem)
-mongoose.connect('mongodb+srv://yasminluduvice:<db_Oliveira279*>@cluster0.yn2ew.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { 
+mongoose.connect('mongodb+srv://yasminluduvice:oliveira279@cluster0.yn2ew.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
 })
@@ -29,8 +29,8 @@ app.use('/api/votacao', votacaoRoutes);
 // Servir arquivos estáticos do frontend
 app.use(express.static('public'));
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+const PORT = 3000;
+app.listen(PORT, '0.0.0.0.', () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
 
